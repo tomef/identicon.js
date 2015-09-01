@@ -14,7 +14,7 @@
 
     var i, data;
     for (i = 0; i < hashes.length; i++) {
-        data = new Identicon(hashes[i].hash, 420).toString();
+        data = new Identicon(hashes[i].hash, 420, 0.08, [245,245,245,255]).toString();
         document.write(
                 hashes[i].id + '<br><img width=420 height=420 src="data:image/png;base64,' + data + '"><br><br>'
         );

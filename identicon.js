@@ -11,11 +11,12 @@
  */
 
 (function() {
-    Identicon = function(hash, size, margin){
+    Identicon = function(hash, size, margin, background){
         this.hash   = hash;
         this.size   = size   || 64;
-        this.margin = margin || .08;
-    }
+        this.margin = margin || 0.08;
+        this.background = background || [240, 240, 240, 255];
+    };
 
     Identicon.prototype = {
         hash:   null,
@@ -30,10 +31,10 @@
                 image   = new PNGlib(size, size, 256);
 
             // light-grey background
-            var bg      = image.color(240, 240, 240);
+            var bg      = image.color(this.background[0], this.background[1], this.background[2], this.background[3]);
 
             // foreground is last 7 chars as hue at 50% saturation, 70% brightness
-            var rgb     = this.hsl2rgb(parseInt(hash.substr(-7), 16) / 0xfffffff, .5, .7),
+            var rgb     = this.hsl2rgb(parseInt(hash.substr(-7), 16) / 0xfffffff, 0.5, 0.7),
                 fg      = image.color(rgb[0] * 255, rgb[1] * 255, rgb[2] * 255);
 
             // the first 15 characters of the hash control the pixels (even/odd)
@@ -86,7 +87,7 @@
         toString: function(){
             return this.render().getBase64();
         }
-    }
+    };
 
     window.Identicon = Identicon;
 })();
