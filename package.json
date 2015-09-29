@@ -1,5 +1,5 @@
 {
-  "name": "identicon.js",
+  "name": "@unique-violation/identicon.js",
   "version": "1.0.0",
   "description": "GitHub-style identicons in JS with no server-side processing.",
   "main": "identicon.js",
